@@ -1,7 +1,7 @@
 // lib/queries.ts
 
 export const siteSettingsQuery = `
-  *[_type == "siteSettings"][0]{
+  *[_type == "siteSettings" &&_id == "siteSettings"][0]{
     siteTitle,
     footerText,
     socialLinks,
@@ -10,7 +10,7 @@ export const siteSettingsQuery = `
 `;
 
 export const heroQuery = `
-  *[_type == "homePage"][0]{
+  *[_type == "homePage" && _id == "homePage"][0]{
     heroTitle,
     heroDescription,
     callToAction,
@@ -19,7 +19,7 @@ export const heroQuery = `
 `;
 
 export const aboutQuery = `
-*[_type == "aboutPage"][0]{
+*[_type == "aboutPage" &&_id == "aboutPage"][0]{
   aboutTitle,
   aboutDescription,
   teamMembers
@@ -28,7 +28,7 @@ export const aboutQuery = `
 ;
 
 export const contactQuery = `
-*[_type == "contactPage"][0]{
+*[_type == "contactPage" &&_id == "contactPage"][0]{
   title,
   description,
   email,
