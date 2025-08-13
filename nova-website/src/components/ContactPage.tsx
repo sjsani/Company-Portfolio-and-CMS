@@ -1,7 +1,7 @@
+import Image from "next/image";
+import Link from "next/link";
 import { sanityClient } from "../../lib/sanity";
 import { contactQuery, siteSettingsQuery } from "../../lib/queries";
-
-import Link from "next/link";
 
 export default async function ContactPage() {
   const contact = await sanityClient.fetch(contactQuery);
@@ -9,6 +9,11 @@ export default async function ContactPage() {
 
   return (
     <>
+      {/* 
+        Make sure you have <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+        in your _document.tsx or _app.tsx for proper mobile scaling.
+      */}
+
       {/* Contact Section */}
       <section className="bg-[#0A0A0A] text-white py-16 px-6">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
@@ -16,12 +21,12 @@ export default async function ContactPage() {
           <div>
             <h1 className="text-4xl font-bold mb-6">{contact.title}</h1>
             <p className="text-lg text-gray-300 mb-6">{contact.description}</p>
-            <a
+            <Link
               href="/contact"
               className="inline-block bg-green-500 text-white font-semibold px-6 py-3 rounded hover:bg-green-600 transition"
             >
               Tell us about your project
-            </a>
+            </Link>
           </div>
 
           {/* Right */}
@@ -47,35 +52,43 @@ export default async function ContactPage() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 px-6">
           {/* Logo + About */}
           <div>
-            <img src={site.logoUrl} alt="Logo" className="w-32 mb-4" />
+            {site.logoUrl && (
+              <Image
+                src={site.logoUrl}
+                alt="Logo"
+                width={128}
+                height={64}
+                className="w-32 mb-4 h-auto"
+              />
+            )}
             <p>{site.footerText}</p>
           </div>
 
-
-
           {/* Social Links */}
-          <div className="pl-50"> {/* Use pl-12 instead of px-50 */}
+          <div className="pl-12">
             <h3 className="text-white font-semibold mb-4 whitespace-nowrap">
               Follow Us
             </h3>
-            <div className="flex space-x-4 text-xl">
+            <ul className="flex flex-wrap gap-4 text-xl">
               {site.socialLinks?.map((rawUrl: string, index: number) => {
-                const safeUrl = rawUrl.startsWith("http") ? rawUrl : `https://${rawUrl}`;
+                const safeUrl = rawUrl.startsWith("http")
+                  ? rawUrl
+                  : `https://${rawUrl}`;
 
                 let hostname = "";
                 try {
                   hostname = new URL(safeUrl).hostname.replace("www.", "");
-                  hostname = hostname.split(".")[0]; // keeps only "instagram", "x", etc.
+                  hostname = hostname.split(".")[0];
                 } catch (e) {
                   console.log("Invalid URL:", rawUrl);
                 }
 
-
-                const title = hostname.charAt(0).toUpperCase() + hostname.slice(1);
+                const title =
+                  hostname.charAt(0).toUpperCase() + hostname.slice(1);
 
                 return (
                   <li key={index} className="flex items-center space-x-2">
-                      {index !== 0 && <span className="text-gray-500">|</span>}
+                    {index !== 0 && <span className="text-gray-500">|</span>}
                     <a
                       href={safeUrl}
                       target="_blank"
@@ -87,9 +100,7 @@ export default async function ContactPage() {
                   </li>
                 );
               })}
-
-
-            </div>
+            </ul>
           </div>
         </div>
       </footer>

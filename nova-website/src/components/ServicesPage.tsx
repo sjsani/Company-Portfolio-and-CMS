@@ -11,29 +11,33 @@ interface Service {
 
 export default async function ServicesPage() {
   const services: Service[] = await sanityClient.fetch(servicesQuery);
-  console.log("Services fetched:", services)
+  console.log("Services fetched:", services);
 
   return (
-    <section className=" text-black  px-6 max-w-6xl mx-auto">
-      <h2 className="text-3xl font-bold mb-10 text-center">Our Services</h2>
+    <section className="text-black px-4 sm:px-6 lg:px-8 max-w-screen-xl mx-auto w-full">
+      <h2 className="text-2xl sm:text-3xl font-bold mb-8 sm:mb-10 text-center">
+        z
+      </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {services.map((service, index) => (
           <div
             key={index}
-            className="bg-gray-100 rounded-lg shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition"
+            className="bg-gray-100 rounded-lg shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition w-full"
           >
             {service.iconUrl && (
-            <Image
-              src={service.iconUrl}
-              alt={`${service.title} icon`}
-              width={64} // w-16 = 4rem = 64px
-              height={64} // h-16 = 4rem = 64px
-              className="mb-4"
-            />
+              <div className="w-16 h-16 mb-4 relative">
+                <Image
+                  src={service.iconUrl}
+                  alt={`${service.title} icon`}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 640px) 64px, (max-width: 1024px) 64px, 64px"
+                />
+              </div>
             )}
-            <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-            <p className="text-black">{service.description}</p>
+            <h3 className="text-lg sm:text-xl font-semibold mb-2">{service.title}</h3>
+            <p className="text-sm sm:text-base text-black">{service.description}</p>
           </div>
         ))}
       </div>

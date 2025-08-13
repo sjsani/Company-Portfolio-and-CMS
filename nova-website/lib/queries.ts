@@ -46,3 +46,12 @@ export const servicesQuery = `
 `;
 
 
+export const testimonialsQuery = `
+  *[_type == "testimonials"]{
+    name,
+    role,
+    quote,
+    "imageUrl": image.asset->url,
+    company
+}
+`;
