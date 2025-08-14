@@ -1,5 +1,6 @@
 import { defineType } from 'sanity'
 
+
 const homePage = defineType({
   name: 'homePage',
   title: 'Home Page',
@@ -25,6 +26,7 @@ const homePage = defineType({
       title: 'Hero Image',
       type: 'image',
     },
+
   ],
 })
 

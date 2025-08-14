@@ -1,5 +1,6 @@
 import { defineType } from 'sanity'
 
+
 const services = defineType({
   name: 'services',
   title: 'Services',
@@ -20,6 +21,7 @@ const services = defineType({
       title: 'Service Icon',
       type: 'image',
     },
+
   ],
 })
 

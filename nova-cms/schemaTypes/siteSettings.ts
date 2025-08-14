@@ -1,4 +1,5 @@
 import { defineType } from 'sanity'
+import seo from './objects/seo'
 
 const siteSettings = defineType({
   name: 'siteSettings',
@@ -31,6 +32,7 @@ const siteSettings = defineType({
       title: 'Site Logo',
       type: 'image',
     },
+    seo,
   ],
 })
 

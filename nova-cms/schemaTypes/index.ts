@@ -4,8 +4,10 @@ import services from './services'
 import contactPage from './contactPage'
 import siteSettings from './siteSettings'
 import testimonials from './testimonials'
+import seo from './objects/seo'
 
 export const schemaTypes = [
+  seo,
   homePage,
   aboutPage,
   services,

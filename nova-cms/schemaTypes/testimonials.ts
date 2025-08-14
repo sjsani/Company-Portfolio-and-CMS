@@ -1,5 +1,6 @@
 import { defineType } from 'sanity'
 
+
 const testimonials = defineType({
   name: 'testimonials',
   title: 'Testimonials',
@@ -33,6 +34,7 @@ const testimonials = defineType({
       title: 'Company',
       type: 'string',
     },
+
 
 
   ],

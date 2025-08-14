@@ -16,8 +16,8 @@ export default async function ServicesPage() {
   return (
     
     <section
-      className="text-black px-4 sm:px-6 lg:px-8 max-w-screen-xl mx-auto w-full py-16"
-      style={{ backgroundColor: "#f5f9ff", borderTop: "4px solid", borderImage: "linear-gradient(to right, #3b82f6, #60a5fa) 1" }}
+      className="text-black px-4 sm:px-6 lg:px-8 max-w-screen-xl mx-auto w-full py-16 rounded-lg border-t-4 border-blue-500"
+      style={{ backgroundColor: "#f5f9ff" }}
     >
       
       <h2 className="text-2xl sm:text-3xl font-bold mb-12 text-center">
