@@ -1,13 +1,11 @@
-// components/TestimonialsLayout.tsx
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay, EffectFade } from "swiper/modules";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import Image from "next/image";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "swiper/css/effect-fade";
 
 interface Testimonial {
   name: string;
@@ -20,18 +18,17 @@ interface Testimonial {
 export default function TestimonialsLayout({ testimonials }: { testimonials: Testimonial[] }) {
   return (
     <Swiper
-  modules={[Navigation, Pagination, Autoplay]}
-  spaceBetween={20}
-  navigation
-  pagination={{ clickable: true }}
-  autoplay={{ delay: 10000 }}
-  breakpoints={{
-    640: { slidesPerView: 1 },
-    1024: { slidesPerView: 2 },
-  }}
-  className="w-full"
->
-
+      modules={[Navigation, Pagination, Autoplay]}
+      spaceBetween={20}
+      pagination={{ clickable: true }}
+      autoplay={{ delay: 10000 }}
+      breakpoints={{
+        0: { slidesPerView: 1, navigation: false },       // disable arrows on small screens
+        640: { slidesPerView: 1, navigation: false },      // still disable if only 1 per view
+        1024: { slidesPerView: 2, navigation: true },      // enable arrows on large screens
+      }}
+      className="w-full"
+    >
       {testimonials.map((testimonial, index) => (
         <SwiperSlide key={index}>
           <div
