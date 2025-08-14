@@ -16,12 +16,12 @@ export default async function ContactPage() {
           <div>
             <h1 className="text-4xl font-bold mb-6">{contact.title}</h1>
             <p className="text-lg text-gray-300 mb-6">{contact.description}</p>
-            <Link
-              href="/contact"
-              className="inline-block bg-[#2ab4ff] text-white font-semibold px-6 py-3 rounded hover:bg-[#1a92d4] transition-colors"
+            <h1
+              
+              className="inline-block text-white font-semibold  py-12 text-2xl"
             >
               Tell us about your project
-            </Link>
+            </h1>
           </div>
 
           {/* Right */}
