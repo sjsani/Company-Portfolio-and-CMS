@@ -30,6 +30,14 @@ export default function HomeHeroNav({ hero, site }: Props) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Smooth scroll function
+  const handleScrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       {/* NAVIGATION */}
@@ -38,9 +46,7 @@ export default function HomeHeroNav({ hero, site }: Props) {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className={`fixed w-full z-50 px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center transition-colors duration-750 ${
-          scrolled
-            ? "bg-black shadow-lg" // solid when scrolled
-            : "" // transparent at top
+          scrolled ? "bg-black shadow-lg" : ""
         }`}
       >
         <Link href="/" className="flex items-center space-x-2">
@@ -57,20 +63,18 @@ export default function HomeHeroNav({ hero, site }: Props) {
         </Link>
 
         <div className="hidden md:flex text-white space-x-6 text-sm md:text-base">
-          {["Home",   "Services","Testimonials","About", "Contact"].map(
-            (item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="relative transition duration-300 hover:text-blue-400
-                           after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 
-                           after:h-[2px] after:bg-blue-400 after:transition-all after:duration-300 
-                           hover:after:w-full"
-              >
-                {item}
-              </a>
-            )
-          )}
+          {["Home", "Services", "Testimonials", "About", "Contact"].map((item) => (
+            <button
+              key={item}
+              onClick={() => handleScrollTo(item.toLowerCase())}
+              className="relative transition duration-300 hover:text-blue-400
+                         after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 
+                         after:h-[2px] after:bg-blue-400 after:transition-all after:duration-300 
+                         hover:after:w-full"
+            >
+              {item}
+            </button>
+          ))}
         </div>
       </motion.nav>
 
@@ -80,10 +84,7 @@ export default function HomeHeroNav({ hero, site }: Props) {
           {/* Particle Background */}
           <div className="absolute inset-0 z-0">
             <ParticleBackground imageUrl={hero.imageUrl} />
-            {/* Gradient overlay for better text contrast */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black"></div>
-            
-
           </div>
 
           {/* Hero Content */}
@@ -99,13 +100,13 @@ export default function HomeHeroNav({ hero, site }: Props) {
             <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-8">
               {hero.heroDescription}
             </p>
-            <a
-              href="#contact"
+            <button
+              onClick={() => handleScrollTo("contact")}
               className="text-white inline-block px-4 sm:px-6 py-2 sm:py-3 
                          bg-blue-600 rounded font-medium hover:bg-blue-700 transition"
             >
               {hero.callToAction}
-            </a>
+            </button>
           </motion.div>
         </div>
       </section>
