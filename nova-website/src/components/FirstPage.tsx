@@ -100,7 +100,7 @@ export default function HomeHeroNav({ hero, site }: Props) {
               {hero.heroDescription}
             </p>
             <a
-              href="#"
+              href="#contact"
               className="text-white inline-block px-4 sm:px-6 py-2 sm:py-3 
                          bg-blue-600 rounded font-medium hover:bg-blue-700 transition"
             >

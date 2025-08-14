@@ -23,9 +23,9 @@ export default function TestimonialsLayout({ testimonials }: { testimonials: Tes
       pagination={{ clickable: true }}
       autoplay={{ delay: 10000 }}
       breakpoints={{
-        0: { slidesPerView: 1, navigation: false },       // disable arrows on small screens
-        640: { slidesPerView: 1, navigation: false },      // still disable if only 1 per view
-        1024: { slidesPerView: 2, navigation: true },      // enable arrows on large screens
+        0: { slidesPerView: 1, navigation: false },
+        640: { slidesPerView: 1, navigation: false },
+        1024: { slidesPerView: 2, navigation: true },
       }}
       className="w-full"
     >
@@ -37,7 +37,7 @@ export default function TestimonialsLayout({ testimonials }: { testimonials: Tes
               minHeight: "320px",
             }}
           >
-            {/* subtle pattern overlay */}
+
             <div className="absolute inset-0 bg-[url('/patterns/dots.svg')] opacity-10 pointer-events-none"></div>
 
             {testimonial.imageUrl && (
@@ -52,7 +52,7 @@ export default function TestimonialsLayout({ testimonials }: { testimonials: Tes
               </div>
             )}
 
-            {/* speech bubble style */}
+
             <p className="relative text-sm sm:text-base italic mb-6 text-gray-900 before:content-['“'] before:text-3xl before:absolute before:-top-2 before:-left-2 after:content-['”'] after:text-3xl after:absolute after:-bottom-2 after:-right-2">
               {testimonial.quote}
             </p>
