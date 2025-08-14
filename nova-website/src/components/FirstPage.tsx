@@ -57,7 +57,7 @@ export default function HomeHeroNav({ hero, site }: Props) {
         </Link>
 
         <div className="hidden md:flex text-white space-x-6 text-sm md:text-base">
-          {["Home", "About", "Testimonials", "Services", "Contact"].map(
+          {["Home",   "Services","Testimonials","About", "Contact"].map(
             (item) => (
               <a
                 key={item}
