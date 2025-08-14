@@ -8,22 +8,17 @@ export default async function ContactPage() {
   const site = await sanityClient.fetch(siteSettingsQuery);
 
   return (
-    <>
-      {/* 
-        Make sure you have <meta name="viewport" content="width=device-width, initial-scale=1" /> 
-        in your _document.tsx or _app.tsx for proper mobile scaling.
-      */}
-
-      {/* Contact Section */}
-      <section className="bg-[#0A0A0A] text-white py-16 px-6">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
+    <footer className="bg-gradient-to-b from-[#081123] to-black text-white border-t-4 border-[#2ab4ff]">
+      <div className="max-w-6xl mx-auto px-6 py-12">
+        {/* Top: Contact Info */}
+        <div className="grid md:grid-cols-2 gap-12 mb-12">
           {/* Left */}
           <div>
             <h1 className="text-4xl font-bold mb-6">{contact.title}</h1>
             <p className="text-lg text-gray-300 mb-6">{contact.description}</p>
             <Link
               href="/contact"
-              className="inline-block bg-green-500 text-white font-semibold px-6 py-3 rounded hover:bg-green-600 transition"
+              className="inline-block bg-[#2ab4ff] text-white font-semibold px-6 py-3 rounded hover:bg-[#1a92d4] transition-colors"
             >
               Tell us about your project
             </Link>
@@ -45,31 +40,33 @@ export default async function ContactPage() {
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Footer */}
-      <footer className="bg-black text-gray-400 py-12">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 px-6">
+        {/* Divider */}
+        <div className="border-t border-gray-800 my-8"></div>
+
+        {/* Bottom: Footer Info */}
+        <div className="grid md:grid-cols-3 gap-8">
           {/* Logo + About */}
           <div>
             {site.logoUrl && (
               <Image
                 src={site.logoUrl}
                 alt="Logo"
-                width={128}
-                height={64}
-                className="w-32 mb-4 h-auto"
+                width={160}
+                height={80}
+                className="w-40 h-auto mb-4"
+                priority
               />
             )}
-            <p>{site.footerText}</p>
+            <p className="leading-relaxed text-gray-400">{site.footerText}</p>
           </div>
 
           {/* Social Links */}
-          <div className="pl-12">
+          <div className="pl-0 md:pl-12">
             <h3 className="text-white font-semibold mb-4 whitespace-nowrap">
               Follow Us
             </h3>
-            <ul className="flex flex-wrap gap-4 text-xl">
+            <ul className="flex flex-wrap gap-4 text-lg">
               {site.socialLinks?.map((rawUrl: string, index: number) => {
                 const safeUrl = rawUrl.startsWith("http")
                   ? rawUrl
@@ -93,7 +90,7 @@ export default async function ContactPage() {
                       href={safeUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:text-gray-400 text-white"
+                      className="hover:text-[#2ab4ff] transition-colors duration-200"
                     >
                       {title}
                     </a>
@@ -103,7 +100,7 @@ export default async function ContactPage() {
             </ul>
           </div>
         </div>
-      </footer>
-    </>
+      </div>
+    </footer>
   );
 }

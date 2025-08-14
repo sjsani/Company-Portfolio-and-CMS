@@ -49,14 +49,16 @@ const ParticleBackground = ({ imageUrl }: DesignProps) => {
               opacity: 0.5,
               width: 1,
             },
-            collisions: { enable: true },
+            collisions: { enable: false }, // avoid bounce acceleration
             move: {
               direction: "none",
               enable: true,
-              outModes: { default: "bounce" },
+              outModes: { default: "out" },
               random: false,
               speed: 2,
               straight: false,
+              drift: 0,
+              attract: { enable: false }
             },
             number: {
               density: { enable: true, area: 1000 },
@@ -66,6 +68,7 @@ const ParticleBackground = ({ imageUrl }: DesignProps) => {
             shape: { type: "circle" },
             size: { value: { min: 1, max: 5 } },
           },
+
           detectRetina: true,
         }}
       />
