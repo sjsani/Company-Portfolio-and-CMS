@@ -6,8 +6,8 @@ export default async function AboutPage() {
 
   return (
     <section
-      className="flex flex-col md:flex-row max-w-6xl w-full mx-auto px-4 md:px-8 py-12 
-      text-black box-border overflow-x-hidden bg-[#f7faff] border-t-4 border-[#2ab4ff] rounded-lg "
+      className="flex flex-col md:flex-row max-w-6xl w-full mx-auto px-4 md:px-15 py-15 
+      text-black box-border overflow-x-hidden bg-[#f7faff] border-t-4 border-l-4 border-r-4 border-[#2ab4ff] rounded-lg "
     >
       {/* Left Section - Who We Are */}
       <div className="md:w-1/2 pr-0 md:pr-6 mb-10 md:mb-0">

@@ -16,7 +16,7 @@ export default async function ServicesPage() {
   return (
     
     <section
-      className="text-black px-4 sm:px-6 lg:px-8 max-w-screen-xl mx-auto w-full py-16 rounded-lg border-t-4 border-blue-500"
+      className="text-black px-4 sm:px-6 lg:px-8 max-w-screen-xl mx-auto w-full py-16 rounded-lg border-t-4 border-l-4 border-r-4  border-blue-500"
       style={{ backgroundColor: "#f5f9ff" }}
     >
       

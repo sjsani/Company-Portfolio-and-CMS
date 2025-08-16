@@ -19,9 +19,11 @@ export default async function HomePage() {
       <SEO siteSeo={site.seo} />
 
       <main className="min-h-screen w-full overflow-x-hidden">
-        <section id="home">
-          <FirstPage hero={hero} site={site} />
-        </section>
+        <GradientWrapper>
+          <section id="home">
+            <FirstPage hero={hero} site={site} />
+          </section>
+        </GradientWrapper>
 
         <GradientWrapper>
           <section id="services" className="py-20 sm:py-32 px-4 w-full overflow-hidden">
